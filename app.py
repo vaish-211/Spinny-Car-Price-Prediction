@@ -6,7 +6,7 @@ import os
 
 # Set page config
 st.set_page_config(
-    page_title="app11 Spinny Car Price Predictor",
+    page_title="Spinny Car Price Predictor",
     page_icon="🚗",
     layout="wide",
     initial_sidebar_state="expanded"
