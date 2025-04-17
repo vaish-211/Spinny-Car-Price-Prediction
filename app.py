@@ -283,11 +283,11 @@ with tab1:
 
 # Analytics tab
 with tab2:
-    st.markdown("<h1>📊 Analytics Dashboard</h1>", unsafe_allow_html=True)
-    st.markdown("#### Explore Visual Insights from the Spinny Car Dataset")
+    st.markdown("<h2>📊 Analytics Dashboard</h1>", unsafe_allow_html=True)
+    st.markdown("##### Explore Visual Insights from the Spinny Car Dataset")
 
     # Dashboard Image instead of Tableau
-    st.markdown("### 📈 Overall Dashboard")
+    st.markdown("#### 📈 Overall Dashboard")
     dashboard_path = "assets/Spinny_Car_Dashboard.png"
     if os.path.exists(dashboard_path):
         st.image(dashboard_path, use_container_width=True, caption="Spinny Car Dashboard Overview")
