@@ -278,7 +278,7 @@ with tab1:
             price = model.predict(final_input)[0]
             st.success(f"Estimated Price: ₹ {price:,.2f}")
             st.balloons()
-        st.markdown("</div>", unsafe_allow_html=True)
+        #st.markdown("</div>", unsafe_allow_html=True)
         st.markdown("<div class='footer'>Made with ❤️ by Vaish | Spinny Car Price Predictor</div>", unsafe_allow_html=True)
 
 # Analytics tab
