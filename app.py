@@ -74,7 +74,7 @@ st.markdown("""
         border: 1px solid #561381;
         border-radius: 8px;
         padding: 10px;
-        font-size: 18px;
+        font-size: 16px;
         color: #FFFFFF;
     }
     .stNumberInput label, .stSelectbox label {
@@ -113,17 +113,8 @@ st.markdown("""
     }
     .stTabs [role="tab"][aria-selected="true"] {
         background-color: #561381;
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: bold;
-    }
-    
-    /* Tableau iframe */
-    .tableau-iframe {
-        width: 100%;
-        height: 800px;
-        border: none;
-        border-radius: 12px;
-        margin: 20px 0;
     }
     
     /* Footer */
@@ -190,14 +181,16 @@ data = pd.read_csv("data/preprocessed_car_details.csv")
 # Sidebar
 with st.sidebar:
     if os.path.exists("assets/car_logo.png"):
-        st.image("assets/car_logo.png", use_container_width=True)
+        st.image("assets/car_logo.png", use_column_width=True)
     else:
         st.markdown("<p style='color: white;'>Logo Missing</p>", unsafe_allow_html=True)
     st.markdown("<h2 style='color: white;'>Spinny Car Price Predictor</h2>", unsafe_allow_html=True)
     st.markdown("Navigate the app:")
     st.markdown("- **Predict Price**: Estimate your car's value.")
     st.markdown("- **Analytics**: Explore price trends.")
-    st.markdown("<p style='color: white;'>Built with ❤️ by Vaish</p>", unsafe_allow_html=True)
+    st.markdown("---")
+    st.markdown("<div class='footer'>Built with ❤️ by Vaish | Spinny Car Price Predictor</div>", unsafe_allow_html=True)
+    #st.markdown("<p style='color: white;'>Built with ❤️ by Vaish</p>", unsafe_allow_html=True)
 
 # Tabs
 tab1, tab2 = st.tabs(["🚗 Predict Price", "📊 Analytics"])
@@ -278,19 +271,18 @@ with tab1:
             price = model.predict(final_input)[0]
             st.success(f"Estimated Price: ₹ {price:,.2f}")
             st.balloons()
-        #st.markdown("</div>", unsafe_allow_html=True)
         st.markdown("<div class='footer'>Made with ❤️ by Vaish | Spinny Car Price Predictor</div>", unsafe_allow_html=True)
 
 # Analytics tab
 with tab2:
-    st.markdown("<h2>📊 Analytics Dashboard</h1>", unsafe_allow_html=True)
-    st.markdown("##### Explore Visual Insights from the Spinny Car Dataset")
+    st.markdown("<h1>📊 Analytics Dashboard</h1>", unsafe_allow_html=True)
+    st.markdown("#### Explore Visual Insights from the Spinny Car Dataset")
 
     # Dashboard Image instead of Tableau
-    st.markdown("#### 📈 Overall Dashboard")
+    st.markdown("### 📈 Overall Dashboard")
     dashboard_path = "assets/Spinny_Car_Dashboard.png"
     if os.path.exists(dashboard_path):
-        st.image(dashboard_path, use_container_width=True, caption="Spinny Car Dashboard Overview")
+        st.image(dashboard_path, use_column_width=True, caption="Spinny Car Dashboard Overview")
     else:
         st.warning("Dashboard image not found in assets folder!")
 
@@ -302,19 +294,19 @@ with tab2:
     pie1, pie2, pie3, pie4 = st.columns(4)
     
     with pie1:
-        st.image("visuals/fuel_distribution.png", use_container_width=True, caption="Fuel Type Distribution")
+        st.image("visuals/fuel_distribution.png", caption="Fuel Type Distribution")
         st.markdown("🚗 Diesel and Petrol cars dominate")
 
     with pie2:
-        st.image("visuals/transmission_distribution.png", use_container_width=True, caption="Transmission Types")
+        st.image("visuals/transmission_distribution.png", caption="Transmission Types")
         st.markdown("⚙️ Manual is more common")
 
     with pie3:
-        st.image("visuals/owner_distribution.png", use_container_width=True, caption="Ownership Breakdown")
+        st.image("visuals/owner_distribution.png", caption="Ownership Breakdown")
         st.markdown("👤 Most cars are 1st hand")
 
     with pie4:
-        st.image("visuals/seller_type_distribution.png", use_container_width=True, caption="Car Brands Share")
+        st.image("visuals/seller_type_distribution.png", caption="Car Brands Share")
         st.markdown("🏁 Individual Sellers lead")
     
     st.markdown("---")
@@ -323,15 +315,15 @@ with tab2:
     scatter1, scatter2, scatter3 = st.columns(3)
 
     with scatter1:
-        st.image("visuals/Selling Price vs Mileage.png", use_container_width=True, caption="Mileage matters, but it’s not the only game in town.")
+        st.image("visuals/Selling Price vs Mileage.png", caption="Mileage matters, but it’s not the only game in town.")
         st.markdown("🚗 Most cars have mileage between 15–25 kmpl, but selling prices vary a lot. Some high-priced outliers exist.")
 
     with scatter2:
-        st.image("visuals/Selling Price vs Engine Size.png", use_container_width=True, caption="Engine size fuels the price rise.")
+        st.image("visuals/Selling Price vs Engine Size.png", caption="Engine size fuels the price rise.")
         st.markdown("🛠️ Bigger engines = higher selling prices. The relationship holds well, with some luxury outliers.")
 
     with scatter3:
-        st.image("visuals/Selling Price vs Max Power.png", use_container_width=True, caption="More power? More price.")
+        st.image("visuals/Selling Price vs Max Power.png", caption="More power? More price.")
         st.markdown("⚡ Clear positive trend—cars with more max power usually cost more. A few power-packed outliers too.")
     
     st.markdown("---")
@@ -340,15 +332,15 @@ with tab2:
     line1, line2, line3 = st.columns(3)
 
     with line1:
-        st.image("visuals/Average Selling Price by Year.png", use_container_width=True, caption="Price trends over time.")
+        st.image("visuals/Average Selling Price by Year.png", caption="Price trends over time.")
         st.markdown("📈 Average selling prices rise steadily from 2006 to 2020, reflecting newer car values.")
 
     with line2:
-        st.image("visuals/Total KM Driven by Year.png", use_container_width=True, caption="KM usage over years.")
+        st.image("visuals/Total KM Driven by Year.png", caption="KM usage over years.")
         st.markdown("🚗 Total kilometers driven peak in recent years, indicating higher usage or data volume.")
 
     with line3:
-        st.image("visuals/Average Mileage by Year.png", use_container_width=True, caption="Mileage evolution by year.")
+        st.image("visuals/Average Mileage by Year.png", caption="Mileage evolution by year.")
         st.markdown("⛽ Average mileage fluctuates, with slight improvements in efficiency over time.")
 
     st.markdown("---")
@@ -357,15 +349,15 @@ with tab2:
     bar1, bar2, heat1 = st.columns(3)
 
     with bar1:
-        st.image("visuals/Average Selling Price by Fuel Type.png", use_container_width=True, caption="Price by fuel type.")
+        st.image("visuals/Average Selling Price by Fuel Type.png", caption="Price by fuel type.")
         st.markdown("💧 Diesel and Petrol show higher average selling prices than CNG or LPG.")
 
     with bar2:
-        st.image("visuals/Average Max Power by Owner Type.png", use_container_width=True, caption="Power by ownership.")
+        st.image("visuals/Average Max Power by Owner Type.png", caption="Power by ownership.")
         st.markdown("🏁 Test Drive Cars & First owners tend to have cars with higher average max power.")
 
     with heat1:
-        st.image("visuals/correlation_matrix.png", use_container_width=True, caption="Feature correlations.")
+        st.image("visuals/correlation_matrix.png", caption="Feature correlations.")
         st.markdown("🔗 Strong positive correlations between selling price, engine, and max power.")
 
     st.markdown("---")
