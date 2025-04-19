@@ -116,6 +116,11 @@ st.markdown("""
         font-size: 18px !important;
         font-weight: bold;
     }
+    .stTabs [data-baseweb="tab"] {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff;  /* optional: text color */
+    }
     
     /* Footer */
     .footer {
