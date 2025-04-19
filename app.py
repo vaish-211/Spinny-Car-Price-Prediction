@@ -186,7 +186,7 @@ data = pd.read_csv("data/preprocessed_car_details.csv")
 # Sidebar
 with st.sidebar:
     if os.path.exists("assets/car_logo.png"):
-        st.image("assets/car_logo.png", use_column_width=True)
+        st.image("assets/car_logo.png", use_container_width=True)
     else:
         st.markdown("<p style='color: white;'>Logo Missing</p>", unsafe_allow_html=True)
     st.markdown("<h2 style='color: white;'>Spinny Car Price Predictor</h2>", unsafe_allow_html=True)
@@ -287,7 +287,7 @@ with tab2:
     st.markdown("### 📈 Overall Dashboard")
     dashboard_path = "assets/Spinny_Car_Dashboard.png"
     if os.path.exists(dashboard_path):
-        st.image(dashboard_path, use_column_width=True, caption="Spinny Car Dashboard Overview")
+        st.image(dashboard_path, use_container_width=True, caption="Spinny Car Dashboard Overview")
     else:
         st.warning("Dashboard image not found in assets folder!")
 
